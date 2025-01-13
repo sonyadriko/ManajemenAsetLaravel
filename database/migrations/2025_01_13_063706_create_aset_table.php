@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('provinsi');
             $table->string('kabupaten');
             $table->string('kecamatan');
-            $table->string('jalan');
+            $table->string('alamat');
             $table->string('skema_kerjasama');
             $table->string('mitra');
             $table->string('bidang_usaha');

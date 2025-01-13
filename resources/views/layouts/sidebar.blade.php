@@ -12,7 +12,7 @@
         <li>
             <a href="{{ route('dashboard') }}">
                 <div class="parent-icon">
-                    <ion-icon name="home-outline"></ion-icon>
+                    <ion-icon name="grid-outline"></ion-icon> <!-- Ubah ikon home-outline menjadi grid-outline -->
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
@@ -20,7 +20,7 @@
         <li>
             <a href="{{ route('aset.index') }}">
                 <div class="parent-icon">
-                    <ion-icon name="home-outline"></ion-icon>
+                    <ion-icon name="pricetag-outline"></ion-icon> <!-- Ubah ikon home-outline menjadi pricetag-outline -->
                 </div>
                 <div class="menu-title">Data Aset</div>
             </a>
@@ -28,11 +28,11 @@
         <li>
             <a href="invoice.php">
                 <div class="parent-icon">
-                    <ion-icon name="home-outline"></ion-icon>
+                    <ion-icon name="document-text-outline"></ion-icon> <!-- Ubah ikon home-outline menjadi document-text-outline -->
                 </div>
                 <div class="menu-title">Invoice</div>
             </a>
-        </li>
+        </li>        
     </ul>
     <!--end navigation-->
 </aside>

@@ -1,20 +1,26 @@
 @extends('layouts.app')
 
+@section('title', 'Tambah Data Aset')
+
 @section('content')
     <div class="container">
         <h1>Tambah Data Aset</h1>
         <form action="{{ route('aset.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="mb-3">
-                <label for="no_kontrak" class="form-label">Kode Aset</label>
-                <input type="text" class="form-control" id="no_kontrak" name="no_kontrak" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="objek_kerjasama" class="form-label">Objek Kerjasama</label>
-                <input type="text" class="form-control" id="objek_kerjasama" name="objek_kerjasama" required>
-            </div>
-
+            @include('components.form-group', [
+                'id' => 'no_kontrak',
+                'label' => 'Kode Aset',
+                'name' => 'no_kontrak',
+                'placeholder' => 'Masukkan Kode Aset',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'objek_kerjasama',
+                'label' => 'Objek Kerjasama',
+                'name' => 'objek_kerjasama',
+                'placeholder' => 'Masukkan Objek Kerjasama',
+                'required' => true
+            ])
             <div class="mb-3">
                 <label for="provinsi" class="form-label">Provinsi</label>
                 <select id="provinsi" name="provinsi" class="form-control" required>
@@ -38,13 +44,13 @@
                     <option value="">Pilih Kecamatan</option>
                 </select>
             </div>
-
-            <div class="mb-3">
-                <label for="jalan">Alamat Lengkap</label>
-                <input type="text" class="form-control" id="jalan" name="jalan" placeholder="Masukkan Nama Jalan"
-                    required>
-            </div>
-
+            @include('components.form-group', [
+                'id' => 'alamat',
+                'label' => 'Alamat Lengkap',
+                'name' => 'alamat',
+                'placeholder' => 'Masukkan Alamat Lengkap',
+                'required' => true
+            ])
             <div class="mb-3">
                 <label for="skema_kerjasama">Skema Kerjasama</label>
                 <select class="form-control" name="skema_kerjasama" id="skema_kerjasama" required>
@@ -54,64 +60,77 @@
                     <option value="Sewa">Sewa</option>
                 </select>
             </div>
-
-            <div class="mb-3">
-                <label for="mitra">Nama Mitra</label>
-                <input type="text" class="form-control" id="mitra" name="mitra" placeholder="Masukkan Nama Mitra"
-                    required>
-            </div>
-
-            <div class="mb-3">
-                <label for="bidang_usaha">Bidang Usaha Mitra</label>
-                <input type="text" class="form-control" id="bidang_usaha" name="bidang_usaha"
-                    placeholder="Masukkan Bidang Usaha" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="luas_objek">Luas Objek (Satuan m&sup2;)</label>
-                <input type="text" class="form-control" id="luas_objek" name="luas_objek"
-                    placeholder="Masukkan Luas Objek" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="nilai_kontrak">Nilai Kontrak</label>
-                <input type="number" class="form-control" id="nilai_kontrak" name="nilai_kontrak"
-                    placeholder="Masukkan Nilai Kontrak" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="tgl_mulai">Tanggal Mulai</label>
-                <input type="date" class="form-control" id="tgl_mulai" name="tgl_mulai">
-            </div>
-
-            <div class="mb-3">
-                <label for="tgl_berakhir">Tanggal Berakhir</label>
-                <input type="date" class="form-control" id="tgl_berakhir" name="tgl_berakhir" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="no_nik">No NIK</label>
-                <input type="text" class="form-control" id="no_nik" name="no_nik" placeholder="Masukkan No NIK">
-            </div>
-
-            <div class="mb-3">
-                <label for="no_kk">No KK</label>
-                <input type="text" class="form-control" id="no_kk" name="no_kk" placeholder="Masukkan No KK"
-                    required>
-            </div>
-
-            <div class="mb-3">
-                <label for="no_npwp">No NPWP</label>
-                <input type="text" class="form-control" id="no_npwp" name="no_npwp" placeholder="Masukkan No NPWP"
-                    required>
-            </div>
-
-
-            <div class="mb-3">
-                <label for="tgl_bayar">Tanggal Bayar</label>
-                <input type="date" class="form-control" id="tgl_bayar" name="tgl_bayar" required>
-            </div>
-
+            @include('components.form-group', [
+                'id' => 'mitra',
+                'label' => 'Nama Mitra',
+                'name' => 'mitra',
+                'placeholder' => 'Masukkan Nama Mitra',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'bidang_usaha',
+                'label' => 'Bidang Usaha Mitra',
+                'name' => 'bidang_usaha',
+                'placeholder' => 'Masukkan Bidang Usaha',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'luas_objek',
+                'label' => 'Luas Objek (Satuan m²)',
+                'name' => 'luas_objek',
+                'placeholder' => 'Masukkan Luas Objek',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'nilai_kontrak',
+                'label' => 'Nilai Kontrak',
+                'name' => 'nilai_kontrak',
+                'type' => 'number',
+                'placeholder' => 'Masukkan Nilai Kontrak',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'tgl_mulai',
+                'label' => 'Tanggal Mulai',
+                'name' => 'tgl_mulai',
+                'type' => 'date',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'tgl_berakhir',
+                'label' => 'Tanggal Berakhir',
+                'name' => 'tgl_berakhir',
+                'type' => 'date',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'no_nik',
+                'label' => 'No NIK',
+                'name' => 'no_nik',
+                'placeholder' => 'Masukkan No NIK',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'no_kk',
+                'label' => 'No KK',
+                'name' => 'no_kk',
+                'placeholder' => 'Masukkan No KK',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'no_npwp',
+                'label' => 'No NPWP',
+                'name' => 'no_npwp',
+                'placeholder' => 'Masukkan No NPWP',
+                'required' => true
+            ])
+            @include('components.form-group', [
+                'id' => 'tgl_bayar',
+                'label' => 'Tanggal Bayar',
+                'name' => 'tgl_bayar',
+                'type' => 'date',
+                'required' => true
+            ])
             <div class="mb-3">
                 <label for="file_kmz_option">Koordinat Lokasi (titik koordinat atau
                     .KML):</label>
@@ -157,11 +176,9 @@
                 <label for="foto_npwp">Foto NPWP (JPG, PNG)</label>
                 <input type="file" class="form-control" id="foto_npwp" name="foto_npwp" accept="image/*" required>
             </div>
-
-            <!-- Form lainnya sama seperti kode HTML yang sudah Anda miliki -->
             <div class="mb-3">
-                <label for="foto_ktp" class="form-label">Foto KTP</label>
-                <input type="file" class="form-control" id="foto_ktp" name="foto_ktp">
+                <label for="foto_ktp">Foto KTP</label>
+                <input type="file" class="form-control" id="foto_ktp" name="foto_ktp" accept="image/*" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -218,5 +235,65 @@
                 }
             });
         });
+        function toggleInput() {
+        var option = document.getElementById('file_kmz_option').value;
+        if (option === 'upload') {
+            document.getElementById('file_kmz_upload').style.display = 'block';
+            document.getElementById('coordinate_input').style.display = 'none';
+        } else if (option === 'coordinate') {
+            document.getElementById('file_kmz_upload').style.display = 'none';
+            document.getElementById('coordinate_input').style.display = 'block';
+        } else {
+            document.getElementById('file_kmz_upload').style.display = 'none';
+            document.getElementById('coordinate_input').style.display = 'none';
+        }
+    }
+    // Fungsi untuk inisialisasi peta
+    function initMap() {
+        // Lokasi default (bisa disesuaikan sesuai kebutuhan)
+        var defaultLocation = {
+            lat: -7.250445,
+            lng: 112.768845
+        };
+
+        // Membuat peta baru
+        var map = new google.maps.Map(document.getElementById("map-koordinat"), {
+            zoom: 13,
+            center: defaultLocation,
+        });
+
+        // Membuat marker untuk menunjukkan titik yang dipilih
+        var marker = new google.maps.Marker({
+            position: defaultLocation,
+            map: map,
+            draggable: true // marker dapat digeser oleh pengguna
+        });
+
+        // Menampilkan koordinat default di input (jika diperlukan)
+        document.getElementById("latitude").value = defaultLocation.lat;
+        document.getElementById("longitude").value = defaultLocation.lng;
+
+        // Menangkap event klik pada peta
+        map.addListener("click", function(event) {
+            // Mendapatkan lokasi klik
+            var clickedLocation = event.latLng;
+
+            // Memindahkan marker ke lokasi baru
+            marker.setPosition(clickedLocation);
+
+            // Memperbarui input latitude dan longitude
+            document.getElementById("latitude").value = clickedLocation.lat();
+            document.getElementById("longitude").value = clickedLocation.lng();
+        });
+
+        // Event ketika marker digeser
+        marker.addListener('dragend', function(event) {
+            // Memperbarui input saat marker digeser
+            document.getElementById("latitude").value = event.latLng.lat();
+            document.getElementById("longitude").value = event.latLng.lng();
+        });
+    }
     </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ENV('GOOGLE_MAP_API_KEY')}}&callback=initMap">
 @endsection

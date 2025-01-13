@@ -31,13 +31,22 @@
                         <td>{{ $aset->tgl_berakhir }}</td>
                         <td>{{ $aset->updated_at }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary">Detail</a>
-                            <a href="#" class="btn btn-warning">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{ route('aset.show', $aset->id)}}" class="btn btn-primary">Detail</a>
+                            <a href="{{ route('aset.edit', $aset->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('aset.destroy', $aset->id) }}" method="POST" onsubmit="return confirmDelete()">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    <script>
+        function confirmDelete() {
+            return confirm('Apakah Anda yakin ingin menghapus data aset ini?');
+        }
+    </script>
 @endsection
