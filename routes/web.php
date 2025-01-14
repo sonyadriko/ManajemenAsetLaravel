@@ -45,4 +45,8 @@ Route::post('/get-kabupaten', [AsetController::class, 'getKabupaten'])->name('ge
 // Route untuk mendapatkan kecamatan berdasarkan kabupaten
 Route::post('/get-kecamatan', [AsetController::class, 'getKecamatan'])->name('get.kecamatan');
 
+Route::post('/invoices/create', [DashboardController::class, 'createInvoice'])->name('invoices.create');
+Route::get('/invoices/print', [DashboardController::class, 'printInvoice'])->name('invoices.print');
+
+
 require __DIR__.'/auth.php';

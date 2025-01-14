@@ -30,7 +30,7 @@
                                     <img src="assets/images/avatars/06.png" alt="" class="rounded-circle"
                                         width="54" height="54">
                                     <div class="">
-                                        <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
+                                        <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
                                         <small class="mb-0 dropdown-user-designation text-secondary">UI
                                             Developer</small>
                                     </div>
@@ -41,14 +41,16 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="javascript:;">
-                                <div class="d-flex align-items-center">
-                                    <div class="">
+                            <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
+                                @csrf
+                                <button type="submit"
+                                    class="btn btn-link text-decoration-none text-dark d-flex align-items-center p-0">
+                                    <div>
                                         <ion-icon name="log-out-outline"></ion-icon>
                                     </div>
                                     <div class="ms-3"><span>Logout</span></div>
-                                </div>
-                            </a>
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </li>

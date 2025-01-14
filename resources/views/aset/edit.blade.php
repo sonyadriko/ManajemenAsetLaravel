@@ -14,7 +14,7 @@
                 'name' => 'no_kontrak',
                 'value' => $aset->no_kontrak,
                 'placeholder' => 'Masukkan Kode Aset',
-                'required' => true
+                'required' => true,
             ])
             @include('components.form-group', [
                 'id' => 'objek_kerjasama',
@@ -22,7 +22,7 @@
                 'name' => 'objek_kerjasama',
                 'value' => $aset->objek_kerjasama,
                 'placeholder' => 'Masukkan Objek Kerjasama',
-                'required' => true
+                'required' => true,
             ])
             <div class="mb-3">
                 <label for="provinsi" class="form-label">Provinsi</label>
@@ -66,7 +66,7 @@
                 'name' => 'alamat',
                 'value' => $aset->alamat,
                 'placeholder' => 'Masukkan Alamat Lengkap',
-                'required' => true
+                'required' => true,
             ])
 
             <div class="mb-3">
@@ -85,7 +85,7 @@
                 'name' => 'mitra',
                 'value' => $aset->mitra,
                 'placeholder' => 'Masukkan Nama Mitra',
-                'required' => true
+                'required' => true,
             ])
             @include('components.form-group', [
                 'id' => 'bidang_usaha',
@@ -93,7 +93,7 @@
                 'name' => 'bidang_usaha',
                 'value' => $aset->bidang_usaha,
                 'placeholder' => 'Masukkan Bidang Usaha',
-                'required' => true
+                'required' => true,
             ])
             @include('components.form-group', [
                 'id' => 'luas_objek',
@@ -101,7 +101,7 @@
                 'name' => 'luas_objek',
                 'value' => $aset->luas_objek,
                 'placeholder' => 'Masukkan Luas Objek',
-                'required' => true
+                'required' => true,
             ])
             @include('components.form-group', [
                 'id' => 'nilai_kontrak',
@@ -110,7 +110,7 @@
                 'type' => 'number',
                 'value' => $aset->nilai_kontrak,
                 'placeholder' => 'Masukkan Nilai Kontrak',
-                'required' => true
+                'required' => true,
             ])
             @include('components.form-group', [
                 'id' => 'tgl_mulai',
@@ -118,7 +118,7 @@
                 'name' => 'tgl_mulai',
                 'type' => 'date',
                 'value' => $aset->tgl_mulai,
-                'required' => true
+                'required' => true,
             ])
             @include('components.form-group', [
                 'id' => 'tgl_berakhir',
@@ -126,9 +126,13 @@
                 'name' => 'tgl_berakhir',
                 'type' => 'date',
                 'value' => $aset->tgl_berakhir,
-                'required' => true
+                'required' => true,
             ])
-
+            <div class="mb-3">
+                <label for="berkas_pks">Upload Berkas SHP (PDF)</label>
+                <input type="file" class="form-control" id="berkas_shp" name="berkas_shp" accept=".pdf">
+                <small>File sebelumnya: {{ $aset->berkas_shp }}</small>
+            </div>
             <div class="mb-3">
                 <label for="berkas_pks">Upload Berkas PKS (PDF)</label>
                 <input type="file" class="form-control" id="berkas_pks" name="berkas_pks" accept=".pdf">
@@ -139,6 +143,11 @@
                 <label for="foto_npwp">Foto NPWP (JPG, PNG)</label>
                 <input type="file" class="form-control" id="foto_npwp" name="foto_npwp" accept="image/*">
                 <small>File sebelumnya: {{ $aset->foto_npwp }}</small>
+            </div>
+            <div class="mb-3">
+                <label for="foto_npwp">Foto KTP (JPG, PNG)</label>
+                <input type="file" class="form-control" id="foto_ktp" name="foto_ktp" accept="image/*">
+                <small>File sebelumnya: {{ $aset->foto_ktp }}</small>
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
@@ -162,7 +171,8 @@
                         success: function(data) {
                             var options = '<option value="">Pilih Kota/Kabupaten</option>';
                             $.each(data, function(index, kabupaten) {
-                                options += `<option value="${kabupaten.id}">${kabupaten.nama}</option>`;
+                                options +=
+                                    `<option value="${kabupaten.id}">${kabupaten.nama}</option>`;
                             });
                             $('#kabupaten').html(options);
                             $('#kecamatan').html('<option value="">Pilih Kecamatan</option>');
@@ -185,7 +195,8 @@
                         success: function(data) {
                             var options = '<option value="">Pilih Kecamatan</option>';
                             $.each(data, function(index, kecamatan) {
-                                options += `<option value="${kecamatan.id}">${kecamatan.nama}</option>`;
+                                options +=
+                                    `<option value="${kecamatan.id}">${kecamatan.nama}</option>`;
                             });
                             $('#kecamatan').html(options);
                         }

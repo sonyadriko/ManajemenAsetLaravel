@@ -167,10 +167,10 @@ class AsetController extends Controller
         ]);
 
         $validatedData['created_by'] = auth()->id();
-    
+
         // Buat instance DataAset baru
         $aset = new DataAset($validatedData);
-    
+
         // Daftar file yang perlu di-upload
         $fileFields = [
             'foto_npwp' => 'uploads/foto_npwp',
@@ -179,20 +179,20 @@ class AsetController extends Controller
             'berkas_shp' => 'uploads/shp',
             'berkas_pks' => 'uploads/pks',
         ];
-    
+
         // Proses upload file jika ada
         foreach ($fileFields as $field => $folder) {
             if ($request->hasFile($field)) {
                 $aset->$field = $request->file($field)->store($folder, 'public');
             }
         }
-    
+
         // Simpan data ke database
         $aset->save();
-    
+
         // Redirect dengan pesan sukses
         return redirect()
-            ->route('aset.create')
+            ->route('aset.index')
             ->with('success', 'Data aset berhasil ditambahkan dengan ID: ' . $aset->id);
     }
 
@@ -219,14 +219,25 @@ class AsetController extends Controller
 
         return redirect()->route('aset.index')->with('success', 'Data Aset berhasil dihapus.');
     }
-    
+
 
     public function export()
     {
-        $dataAset = DataAset::with('provinsi', 'kabupaten', 'kecamatan')
-            ->whereNull('deleted_at')
-            ->orderBy('updated_at', 'DESC')
+        $dataAset = DB::table('data_aset')
+            ->leftJoin('provinsi', 'data_aset.provinsi', '=', 'provinsi.id')
+            ->leftJoin('kota_kabupaten', 'data_aset.kabupaten', '=', 'kota_kabupaten.id')
+            ->leftJoin('kecamatan', 'data_aset.kecamatan', '=', 'kecamatan.id')
+            ->whereNull('data_aset.deleted_at')
+            ->orderBy('data_aset.updated_at', 'DESC')
+            ->select(
+                'data_aset.*',
+                'provinsi.nama_provinsi as provinsi_nama',
+                'kota_kabupaten.nama as kabupaten_nama',
+                'kecamatan.nama as kecamatan_nama'
+            )
             ->get();
+
+
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -252,10 +263,10 @@ class AsetController extends Controller
         foreach ($dataAset as $aset) {
             $sheet->setCellValue('A' . $row, $aset->no_kontrak)
                 ->setCellValue('B' . $row, $aset->objek_kerjasama)
-                ->setCellValue('C' . $row, $aset->provinsi->nama_provinsi)
-                ->setCellValue('D' . $row, $aset->kabupaten->nama)
-                ->setCellValue('E' . $row, $aset->kecamatan->nama)
-                ->setCellValue('F' . $row, $aset->jalan)
+                ->setCellValue('C' . $row, $aset->provinsi_nama)
+                ->setCellValue('D' . $row, $aset->kabupaten_nama)
+                ->setCellValue('E' . $row, $aset->kecamatan_nama)
+                ->setCellValue('F' . $row, $aset->alamat)
                 ->setCellValue('G' . $row, $aset->mitra)
                 ->setCellValue('H' . $row, $aset->bidang_usaha)
                 ->setCellValue('I' . $row, $aset->luas_objek)
@@ -268,6 +279,7 @@ class AsetController extends Controller
                 ->setCellValue('P' . $row, $aset->tgl_bayar);
             $row++;
         }
+
 
         $writer = new Xlsx($spreadsheet);
         $filename = 'Data_Aset_' . now()->format('Y-m-d_H-i-s') . '.xlsx';
