@@ -1,10 +1,10 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="{{ asset('assets/images/logo-icon-2.png') }}" class="logo-icon" alt="logo icon">
+            <img src="{{ asset('assets/images/logo.png') }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Fobia</h4>
+            <h4 class="logo-text">PTPN</h4>
         </div>
     </div>
     <!--navigation-->
@@ -26,7 +26,7 @@
             </a>
         </li>
         <li>
-            <a href="invoice.php">
+            <a href="{{ route('invoices.index') }}">
                 <div class="parent-icon">
                     <ion-icon name="document-text-outline"></ion-icon> <!-- Ubah ikon home-outline menjadi document-text-outline -->
                 </div>

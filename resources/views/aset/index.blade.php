@@ -31,8 +31,8 @@
                         <td>{{ $aset->tgl_berakhir }}</td>
                         <td>{{ $aset->updated_at }}</td>
                         <td>
-                            <a href="{{ route('aset.show', $aset->id) }}" class="btn btn-primary btn-sm d-inline">Detail</a>
-                            <a href="{{ route('aset.edit', $aset->id) }}" class="btn btn-warning btn-sm d-inline">Edit</a>
+                            <a href="{{ route('aset.show', $aset->id) }}" class="btn btn-primary d-inline">Detail</a>
+                            <a href="{{ route('aset.edit', $aset->id) }}" class="btn btn-warning d-inline">Edit</a>
                             <form action="{{ route('aset.destroy', $aset->id) }}" method="POST"
                                 onsubmit="return confirmDelete()" class="d-inline">
                                 @csrf

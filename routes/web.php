@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AsetController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,10 @@ Route::post('/get-kecamatan', [AsetController::class, 'getKecamatan'])->name('ge
 
 Route::post('/invoices/create', [DashboardController::class, 'createInvoice'])->name('invoices.create');
 Route::get('/invoices/print', [DashboardController::class, 'printInvoice'])->name('invoices.print');
+Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+Route::get('invoices/{id}/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
+Route::put('invoices/{id}', [InvoiceController::class, 'update'])->name('invoices.update');
+Route::delete('invoices/{id}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
 
 
 require __DIR__.'/auth.php';
