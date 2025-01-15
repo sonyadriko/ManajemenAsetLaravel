@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- loader -->
-    {{-- <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('assets/js/pace.min.js') }}"></script> --}}
+    <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
+    <!-- SimpleBar CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/simplebar@5.3.1/dist/simplebar.min.css" rel="stylesheet" />
 
-    <!-- plugins -->
-    <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+    <!-- Perfect Scrollbar CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/css/perfect-scrollbar.css" rel="stylesheet" />
+
+    <!-- MetisMenu CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet" />
 
     <!-- CSS Files -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -27,7 +30,7 @@
     <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/header-colors.css') }}" rel="stylesheet" />
 
-    <title>@yield('title', 'Fobia - Bootstrap5 Admin Template')</title>
+    <title>@yield('title', 'Dashboard')</title>
 </head>
 
 <body>
@@ -60,10 +63,18 @@
     <!-- End Wrapper -->
 
     <!-- JS Files -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SimpleBar CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.1/dist/simplebar.min.js"></script>
+
+    <!-- MetisMenu CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 
 

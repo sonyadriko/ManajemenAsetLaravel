@@ -8,7 +8,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#invoiceModal">
             Buat Invoice
         </button>
-        <table class="table table-striped mt-4">
+        <table id="invoiceTable" class="table table-striped mt-4">
             <thead>
                 <tr>
                     <th>No</th>
@@ -36,14 +36,32 @@
                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                             </form>
                         </td>
-
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
     @include('components.invoice-modal')
+
+    <!-- Include jQuery (ensure this is loaded first) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+    <!-- Include DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
+    <!-- DataTable Initialization -->
     <script>
+       $(document).ready(function() {
+    console.log("jQuery Loaded");
+    console.log("Initializing DataTable...");
+    $('#invoiceTable').DataTable();
+});
+
+
         function confirmDelete() {
             return confirm('Apakah Anda yakin ingin menghapus data invoice ini?');
         }
